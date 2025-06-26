@@ -35,7 +35,7 @@ export default function GuestsPage() {
     setLoading(prev => ({...prev, fetch: true}));
     setError(null);
     try {
-      const response = await axios.get('http://localhost:5000/api/guests');
+      const response = await axios.get('https://hotel-databae-managment.onrender.com/api/guests');
       setGuests(response.data);
     } catch (error) {
       console.error('Error fetching guests:', error);
@@ -50,7 +50,7 @@ export default function GuestsPage() {
     setError(null);
     try {
       if (editingGuest) {
-        await axios.put(`http://localhost:5000/api/guests/${editingGuest._id}`, guestData);
+        await axios.put(`https://hotel-databae-managment.onrender.com/api/guests/${editingGuest._id}`, guestData);
         setSuccessMessage('Guest updated successfully!');
         setEditingGuest(null);
       } else {
@@ -77,7 +77,7 @@ export default function GuestsPage() {
     setLoading(prev => ({...prev, delete: true}));
     setError(null);
     try {
-      await axios.delete(`http://localhost:5000/api/guests/${guestId}`);
+      await axios.delete(`https://hotel-databae-managment.onrender.com/api/guests/${guestId}`);
       setSuccessMessage('Guest deleted successfully!');
       await fetchGuests();
     } catch (error) {
