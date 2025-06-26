@@ -35,7 +35,7 @@ export default function RoomsPage() {
     setLoading(prev => ({...prev, fetch: true}));
     setError(null);
     try {
-      const response = await axios.get('http://localhost:5000/api/rooms');
+      const response = await axios.get('https://hotel-databae-managment.onrender.com/api/rooms');
       setRooms(response.data);
     } catch (error) {
       console.error('Error fetching rooms:', error);
@@ -50,11 +50,11 @@ export default function RoomsPage() {
     setError(null);
     try {
       if (editingRoom) {
-        await axios.put(`http://localhost:5000/api/rooms/${editingRoom._id}`, roomData);
+        await axios.put(`https://hotel-databae-managment.onrender.com/api/rooms/${editingRoom._id}`, roomData);
         setSuccessMessage('Room updated successfully!');
         setEditingRoom(null);
       } else {
-        await axios.post('http://localhost:5000/api/rooms', roomData);
+        await axios.post('https://hotel-databae-managment.onrender.com/api/rooms', roomData);
         setSuccessMessage('Room added successfully!');
       }
       await fetchRooms();
@@ -77,7 +77,7 @@ export default function RoomsPage() {
     setLoading(prev => ({...prev, delete: true}));
     setError(null);
     try {
-      await axios.delete(`http://localhost:5000/api/rooms/${roomId}`);
+      await axios.delete(`https://hotel-databae-managment.onrender.com/api/rooms/${roomId}`);
       setSuccessMessage('Room deleted successfully!');
       await fetchRooms();
     } catch (error) {
