@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
   const verifyToken = useCallback(async () => {
     try {
-      const res = await axios.get('https://hotel-databae-managment.onrender.com');
+      const res = await axios.get('https://hotel-databae-managment.onrender.com/api/protected');
       setState(prev => ({
         ...prev,
         currentUser: res.data.user,
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (formData) => {
     try {
-      const res = await axios.post('https://hotel-databae-managment.onrender.com', formData);
+      const res = await axios.post('https://hotel-databae-managment.onrender.com/api/auth/login', formData);
       localStorage.setItem('token', res.data.token);
       setState(prev => ({
         ...prev,
