@@ -43,7 +43,7 @@ export default function BookingsPage() {
     setLoading(prev => ({...prev, fetch: true}));
     setError(null);
     try {
-      const response = await axios.get('http://localhost:5000/api/bookings');
+      const response = await axios.get('https://hotel-databae-managment.onrender.com/api/bookings');
       setBookings(response.data);
     } catch (error) {
       console.error('Error fetching bookings:', error);
@@ -58,7 +58,7 @@ export default function BookingsPage() {
     setError(null);
     try {
       if (editingBooking) {
-        await axios.put(`http://localhost:5000/api/bookings/${editingBooking._id}`, bookingData);
+        await axios.put(`https://hotel-databae-managment.onrender.com/api/bookings/${editingBooking._id}`, bookingData);
         setSuccessMessage('Booking updated successfully!');
         setEditingBooking(null);
       } else {
@@ -85,7 +85,7 @@ export default function BookingsPage() {
     setLoading(prev => ({...prev, delete: true}));
     setError(null);
     try {
-      await axios.delete(`http://localhost:5000/api/bookings/${bookingToDelete}`);
+      await axios.delete(`https://hotel-databae-managment.onrender.com/api/bookings/${bookingToDelete}`);
       setSuccessMessage('Booking deleted successfully!');
       await fetchBookings();
     } catch (error) {
